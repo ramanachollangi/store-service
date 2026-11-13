@@ -23,4 +23,5 @@ public class StoreController {
         model.addAttribute("stores", stores);
         return "store-list";
     }
+
 }

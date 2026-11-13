@@ -3,6 +3,7 @@ package com.sprdlearn.boot.bootjdbc.config;
 import com.sprdlearn.boot.bootjdbc.util.MySqlProperties;
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.actuate.web.exchanges.InMemoryHttpExchangeRepository;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -61,6 +62,12 @@ public class PersistenceConfig {
     @Bean
     public JdbcClient jdbcClient(DataSource dataSource) {
         return JdbcClient.create(dataSource);
+    }
+
+    @Bean
+    public InMemoryHttpExchangeRepository httpExchangeRepository() {
+        // Keeps the last 100 exchanges in memory
+        return new InMemoryHttpExchangeRepository();
     }
 
 }

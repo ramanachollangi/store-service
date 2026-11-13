@@ -11,7 +11,22 @@ spring:
     hibernate:
       ddl-auto: update
     open-in-view: false
+management:
+  info:
+    env:
+      enabled: true
+    app:
+      name: My Application
+      version: 1.0.0
 
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,httpexchanges
+
+  endpoint:
+      health:
+        show-details: always
 ---
 # ==========================================
 # Profile 1: Local Development
